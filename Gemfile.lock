@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    danger-junit_results (0.0.1)
-      danger (~> 2.0)
+    danger-junit_results (0.0.2)
+      danger (~> 2.1)
       nokogiri
 
 GEM
