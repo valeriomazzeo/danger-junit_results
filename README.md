@@ -1,5 +1,7 @@
 # danger-junit_results
 
+[![Gem Version](https://badge.fury.io/rb/danger-junit_results.svg)](https://badge.fury.io/rb/danger-junit_results) [![Build Status](https://travis-ci.org/valeriomazzeo/danger-junit_results.svg?branch=master)](https://travis-ci.org/valeriomazzeo/danger-junit_results)
+
 Exposes test results summary with detailed failures, given a path to a JUnit report file.
 
 ## Installation
