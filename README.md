@@ -11,7 +11,7 @@ Exposes test results summary with detailed failures, given a path to a JUnit rep
 ## Usage
 
     junit_results.parse("/tmp/junit-report.xml")
-    junit_results.parse
+    junit_results.report
 
 ## Development
 
