@@ -1,1 +1,1 @@
-require 'xcodebuild/plugin'
+require 'junit_results/plugin'

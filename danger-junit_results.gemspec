@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['valerio.mazzeo@gmail.com']
   spec.description   = %q{Exposes test results summary with detailed failures, given a path to a JUnit report file.}
   spec.summary       = %q{Exposes test results summary with detailed failures, given a path to a JUnit report file.}
-  spec.homepage      = 'https://github.com/valeriomazzeo/danger-xcodebuild'
+  spec.homepage      = 'https://github.com/valeriomazzeo/danger-junit_results'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)

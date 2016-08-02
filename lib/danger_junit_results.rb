@@ -1,1 +1,1 @@
-require 'xcodebuild/gem_version'
+require 'junit_results/gem_version'
