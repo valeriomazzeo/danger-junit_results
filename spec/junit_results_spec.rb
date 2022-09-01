@@ -95,7 +95,7 @@ module Danger
 
         it "has to report successfully" do
           expect(@junit_results.report).to be true
-          expect(@dangerfile.status_report[:messages].first).to eq("Executed 4(4) tests, with 0 failures 🎉")
+          expect(@dangerfile.status_report[:messages].first).to eq("Executed 4(4) tests, with 0 failures and 1 retry 🎉")
           expect(@dangerfile.status_report[:warnings]).to be_empty
           expect(@dangerfile.status_report[:errors]).to be_empty
           expect(@dangerfile.status_report[:markdowns]).to be_empty

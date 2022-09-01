@@ -14,6 +14,7 @@ module Danger
 
     def initialize(arg)
         super
+        @total_count = 0
         @skipped_count = 0
         @executed_count = 0
         @failed_count = 0
@@ -57,13 +58,13 @@ module Danger
       require 'nokogiri'
 
       @doc = Nokogiri::XML(File.open(file_path))
-
-      @total_count = @doc.xpath('//testsuite').map { |x| x.attr('tests').to_i }.inject(0){ |sum, x| sum + x }
+      groupedByName = @doc.xpath('//testcase').group_by { |x| "#{x.attr('classname')}.#{x.attr('name')}" }
+      @retried_count = groupedByName.reduce(0) { |sum, (key, value)| sum + (value.count - 1) }
+      @total_count = @doc.xpath('//testsuite').map { |x| x.attr('tests').to_i }.inject(0){ |sum, x| sum + x } - @retried_count
       @skipped_count = @doc.xpath('//testsuite').map { |x| x.attr('skipped').to_i }.inject(0){ |sum, x| sum + x }
       @executed_count = @total_count - @skipped_count
-      @failed_count = @doc.xpath('//testsuite').map { |x| x.attr('failures').to_i }.inject(0){ |sum, x| sum + x }
-
-      @failures = @doc.xpath('//failure')
+      @failures = groupedByName.map { |(key, value)| value.last().xpath('failure') }.select { |x| !x.empty?() }.flatten
+      @failed_count = @failures.count
 
       return @failed_count <= 0
     end
@@ -74,12 +75,15 @@ module Danger
     def report
       tests_executed_string = @executed_count == 1 ? "test" : "tests"
       tests_failed_string = @failed_count == 1 ? "failure" : "failures"
+      tests_retried_string = @retried_count == 1 ? "retry" : "retries"
 
       if @failed_count > 0
         fail("Executed #{@executed_count}(#{@total_count}) #{tests_executed_string}, with **#{@failed_count}** #{tests_failed_string} 🚨")
         @failures.each do |failure|
           fail("`[#{failure.content.split("/").last}] [#{failure.parent['name']}] #{failure['message']}`")
         end
+      elsif @retried_count > 0
+        message("Executed #{@executed_count}(#{@total_count}) #{tests_executed_string}, with #{@failed_count} #{tests_failed_string} and #{@retried_count} #{tests_retried_string} 🎉")
       else
         message("Executed #{@executed_count}(#{@total_count}) #{tests_executed_string}, with #{@failed_count} #{tests_failed_string} 🎉")
       end
