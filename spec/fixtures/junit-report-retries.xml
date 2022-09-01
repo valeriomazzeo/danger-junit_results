@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='myProjectTests.xctest' tests='5' failures='1'>
+  <testsuite name='myProjectTests.RetryTests' tests='5' failures='1'>
+    <testcase classname='myProjectTests.RetryTests' name='testFail'>
+      <failure message='failed - hello world'>myProjectTests/RetryTests.swift:23</failure>
+    </testcase>
+    <testcase classname='myProjectTests.RetryTests' name='testFail' time='0.001'/>
+    <testcase classname='myProjectTests.RetryTests' name='testRegister' time='0.015'/>
+    <testcase classname='myProjectTests.RetryTests' name='testRegisterWithError' time='0.005'/>
+    <testcase classname='myProjectTests.RetryTests' name='testRegisterWithUserAlreadyExistsError' time='0.003'/>
+  </testsuite>
+</testsuites>
