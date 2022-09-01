@@ -3,7 +3,7 @@ PATH
   specs:
     danger-junit_results (0.0.5)
       danger-plugin-api (~> 1.0)
-      nokogiri
+      nokogiri (~> 1.13)
 
 GEM
   remote: https://rubygems.org/
@@ -145,12 +145,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bundler
+  bundler (~> 2.3)
   danger-junit_results!
   guard (~> 2.18)
   guard-rspec (~> 4.7)
   listen (= 3.0.7)
-  pry
+  pry (~> 0.13)
   rake (~> 10.0)
   rspec (~> 3.4)
   yard (~> 0.8)

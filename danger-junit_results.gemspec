@@ -19,10 +19,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'danger-plugin-api', '~> 1.0'
-  spec.add_runtime_dependency 'nokogiri'
+  spec.add_runtime_dependency 'nokogiri', '~> 1.13'
 
   # General ruby development
-  spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'bundler', '~> 2.3'
   spec.add_development_dependency 'rake', '~> 10.0'
 
   # Testing support
@@ -43,5 +43,5 @@ Gem::Specification.new do |spec|
   #    require 'pry'
   #    binding.pry
   # This will stop test execution and let you inspect the results
-  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'pry', '~> 0.13'
 end
