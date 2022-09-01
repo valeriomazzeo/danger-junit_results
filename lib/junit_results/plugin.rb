@@ -17,6 +17,7 @@ module Danger
         @skipped_count = 0
         @executed_count = 0
         @failed_count = 0
+        @retried_count = 0
     end
 
     # Total number of tests.
@@ -38,6 +39,11 @@ module Danger
     #
     # @return   [failed_count]
     attr_reader :failed_count
+
+    # Total number of tests retried.
+    #
+    # @return   [retried_count]
+    attr_reader :retried_count
 
     # An array of XML elements of the failed tests.
     #
